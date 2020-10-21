@@ -1,53 +1,70 @@
 
 public class Book {
 	
+	private static final double TAX = 0.20;
+	
 	private String title;
 	private String firstName;
 	private String lastName;
 	private int year;
+	private double price;
 	
-	public Book(String titleIni, String fName, String lName, int yearIni) {
-		title = titleIni == "" || titleIni == null ? "Unknown" : titleIni;
-		firstName = fName == "" || fName == null ? "undefined" : fName;
-		lastName = lName == "" || lName == null ? "undefined" : lName;
-		year = yearIni < 1900 ? 1900 : yearIni;
+	public Book(String title, String firstName, String lastName, int year, double price) {
+		this.title = title == "" || title == null ? "Unknown" : title;
+		this.firstName = firstName == "" || firstName == null ? "undefined" : firstName;
+		this.lastName = lastName == "" || lastName == null ? "undefined" : lastName;
+		this.year = year < 1900 ? 1900 : year;
+		this.price = price < 0 ? -1 : price;
 	}
 	
 	
 	// getter
 	
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 	
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 	
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
 	
 	public int getYear() {
-		return year;
+		return this.year;
+	}
+	
+	public double getPrice() {
+		return this.price;
+	}
+	
+	// Only get total value
+	public double getTotalPrice() {
+		return this.price * (TAX + 1);
 	}
 	
 	
 	// setter
 	
-	public void setTitle(String titleIni) {
-		title = titleIni == "" || titleIni == null ? "Unknown" : titleIni;
+	public void setTitle(String title) {
+		this.title = title == "" || title == null ? "Unknown" : title;
 	}
 	
-	public void setFirstName(String fName) {
-		firstName = fName == "" || fName == null ? "undefined" : fName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName == "" || firstName == null ? "undefined" : firstName;
 	}
 	
-	public void setLastName(String lName) {
-		lastName = lName == "" || lName == null ? "undefined" : lName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName == "" || lastName == null ? "undefined" : lastName;
 	}
 	
-	public void setYear(int yearIni) {
-		year = yearIni < 1900 ? 1900 : yearIni;
+	public void setYear(int year) {
+		this.year = year < 1900 ? 1900 : year;
+	}
+	
+	public void setPrice(double price) {
+		this.price = price < 0 ? -1 : price;
 	}
 }
